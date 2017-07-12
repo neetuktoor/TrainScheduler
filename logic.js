@@ -72,7 +72,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   //Create variables for table above
     // First Train Time (pushed back 1 year to make sure it comes before current time)
-    var firstTrainTimeConverted = moment(firstTrainTime, "hh:mm").subtract(1, "years");
+    var firstTrainTimeConverted = moment(firstTrainTime, "hh:mm A").subtract(1, "years");
     // console.log(firstTrainTimeConverted);
 
     // Current Time
@@ -94,20 +94,13 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-    var nextTrainFormatted = moment(nextTrain).format("hh:mm");
+    var nextTrainFormatted = moment(nextTrain).format("hh:mm A");
 
 //Append each input to Table
 $("#schedule-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + 
   trainFrequency + "</td><td>" + nextTrainFormatted + "</td><td>" + tMinutesTillTrain + "</td><tr>");
 
 });
-
-
-
-
-
-
-
 
   
   
